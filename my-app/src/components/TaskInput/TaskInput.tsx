@@ -5,17 +5,17 @@ import styles from './taskInput.module.scss'
 
 import { Todo } from '../../@types/todo.type'
 import { TodoTypes } from '../../PropTypes/todo.proptype'
-import connect, { ExtraInfoType } from '../../HOC/connect'
+import connect from '../../HOC/connect'
 import { debug, log } from '../../constants'
 
-interface TaskInputProps extends ExtraInfoType {
+interface TaskInputProps {
   addTodo: (name: string) => void
   editTodo: (name: string) => void
   finishEditTodo: () => void
   currentTodo: Todo | null
 }
 
-function TaskInput(props: TaskInputProps) {
+function TaskInput(props: TaskInputProps & typeof injectedProps) {
   const { addTodo, currentTodo, editTodo, finishEditTodo, debug, log } = props
   const [name, setName] = useState<string>('')
   log(debug)
@@ -63,4 +63,5 @@ TaskInput.propTypes = {
 }
 
 // export default connect<TaskInputProps>(TaskInput)
-export default connect({ debug: debug, log: log })(TaskInput)
+const injectedProps = { debug: debug, log: log }
+export default connect(injectedProps)(TaskInput)
