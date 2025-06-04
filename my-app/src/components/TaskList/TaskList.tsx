@@ -14,7 +14,7 @@ interface TaskListProps {
 }
 
 function TaskList(props: TaskListProps & typeof injectedProps) {
-  const { doneTaskList, todos, handleDoneTodo, startEditTodo, deleteTodo } = props
+  const { doneTaskList, todos, handleDoneTodo, startEditTodo, deleteTodo, user } = props
 
   const onChangeCheckbox = (idTodo: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
     handleDoneTodo(idTodo, event.target.checked)
