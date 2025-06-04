@@ -19,5 +19,5 @@ function equal(prevProp: TitleProps, nextProps: TitleProps) {
   return prevProp.address.street === nextProps.address.street
 }
 
-export default React.memo(Title, equal) //ngoai tham số đầu tiên là component
+export default React.memo(Title) //ngoai tham số đầu tiên là component
 //tham số thứ 2 đó là 1 function xem nó có rerender không
